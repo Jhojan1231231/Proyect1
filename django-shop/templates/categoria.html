@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+{% block titulo%}
+    {{ categoria|title }}
+{% endblock titulo%}
+
+{% block contenido %}
+         <div class="alert alert-primary text-center" role="alert">
+            <h2>{{ categoria|title }}</h2>
+        </div>
+
+        <div class="row">
+            {% for producto in productos %}
+                <div class="col-12 col-md-4 mb-3">
+                    <div class="card h-100">
+                        <img src="{% static "Img/pd.png" %}" class="card-img-top" alt="{{ producto.nombre }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ producto.nombre }}</h5>
+                            <p class="card-text">{{ producto.descripcion }}</p>
+                            <p class="card-text"><strong>Precio:</strong> ${{ producto.precio }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+
+        <a href="/" class="btn btn-primary m-2 w-100">Volver</a>
+{% endblock contenido%}
